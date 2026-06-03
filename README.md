@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aether SaaS - Premium Next.js Admin Dashboard Template
 
-## Getting Started
+Aether SaaS is a premium, developer-friendly, and modern admin dashboard template engineered using **Next.js 16 (App Router)**, **React 19**, and **Tailwind CSS v4**. Built for startups, developers, and creators, it features rich visual aesthetics, stateful components, flawless text/layout direction (RTL) mirroring, and highly customizable structure layers.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Technology Stack & Dependencies
+
+*   **Framework**: Next.js 16 (Turbopack, App Router)
+*   **Library**: React 19 (Server Components + Client Hooks)
+*   **Styling**: Tailwind CSS v4 (CSS-first configurations)
+*   **Validation**: React Hook Form + Zod Schemas
+*   **Icons**: Lucide React
+*   **Charts**: Recharts (Responsive, Dark Mode aware)
+*   **Drag & Drop**: @dnd-kit/core (Kanban project boards)
+*   **Mockups Database**: local mock JSON files seeded via `@faker-js/faker`
+
+---
+
+## ✨ Features Breakdown
+
+1.  **Layout Modifiers**:
+    *   **Horizontal Layout**: Switch to a top-header navigation viewport dynamically.
+    *   **Vertical Collapsible Sidebar**: Collapsible left sidebar navigation drawer.
+    *   **Padding Densities**: Toggle compact, normal, and spacious spacing scales.
+2.  **Stateful Modules**:
+    *   **Operational Dashboard**: Responsive Recharts area charts, KPI metrics widgets, and sortable ledger tables.
+    *   **CRM Contacts Page**: Table with pagination, sheet form validators, delete boundaries, and Illustrated Empty States.
+    *   **Kanban Projects Page**: Draggable columns (Backlog, In Progress, Review, Done) with avatar bubbles, priority badges, and comments.
+    *   **Stateful Calendar**: Day block grids, prev/next month togglers, category labels, and Zod event creation form modals.
+    *   **Real-time Chat**: List of users, responsive stream layout, text sender, and collapsible profile details panel.
+    *   **Billing Invoices Ledger**: Renders paid/pending/failed logs, itemized views, and interactive PDF triggers.
+    *   **Interactive Analytics**: Metric trend columns and Double-Series Recharts bars.
+3.  **RTL Support**:
+    *   One-click dynamic RTL direction mirroring (`dir="rtl"` applied to `<html>`).
+    *   Built using CSS logical properties (`ps-`, `pe-`, `border-s`, `border-e`, `text-start`, `text-end`) for mirror compliance.
+4.  **Submission Checklist Standard**:
+    *   Responsive design.
+    *   Focus states compliance for accessibility.
+    *   Suspense and loading boundaries on every route segment.
+    *   Error capture fallback screens.
+
+---
+
+## 📁 Folder Architecture
+
+```text
+admin-dashboard/
+├── app/                  # Next.js App Router (Pages, layouts, routers)
+│   ├── analytics/        # Analytical charts metrics
+│   ├── apps/             # Integrated Apps
+│   │   ├── calendar/     # Scheduler page & Add Event schemas
+│   │   ├── chat/         # Stateful websocket messaging mockups
+│   │   ├── crm/          # Client listing & inline sheet rosters
+│   │   ├── invoice/      # PDF logs view & Detail view pages
+│   │   └── projects/     # Kanban lists (dnd-kit cards)
+│   ├── auth/             # Login, register, strength reset portals
+│   ├── dashboard/        # Default KPI dashboard view
+│   ├── docs/             # Technical reference documentation console
+│   ├── globals.css       # Tailwind imports & variables base layer
+│   ├── layout.tsx        # Global theme and provider allocations
+│   └── page.tsx          # Root Redirect segment
+├── components/           # Reusable Client / Server Elements
+│   ├── ui/               # Radix & Lucide base buttons, cards, sheets
+│   ├── sidebar.tsx       # Vertical navigation left drawer
+│   ├── navbar.tsx        # Top operational actions console
+│   └── layout-wrapper.tsx# Directional & horizontal switches wrapper
+├── lib/                  # Helper utilities and data seeds
+│   ├── mock-data.ts      # Offline database files
+│   └── seed.ts           # JSON mockup generator files
+└── tsconfig.json         # TypeScript configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started & Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Install Dependencies
+Run the installation script in the project directory root:
+```bash
+pnpm install
+```
 
-## Learn More
+### 2. Run the Mock Data Seeder
+Populate the local mock JSON datastores with 100 realistic contacts, 50 project cards, and 200 invoice transactions:
+```bash
+npx tsx lib/seed.ts
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Start the Development Server
+Launch the compiler and boot localhost port:
+```bash
+pnpm dev
+```
+Open [http://localhost:3000](http://localhost:3000) inside your web browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Build for Production
+Pre-compile and bundle optimized code assets:
+```bash
+pnpm build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ⚙️ Configuration Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable | Description | Default |
+| :--- | :--- | :--- |
+| `NEXT_PUBLIC_APP_NAME` | Browser window title name | `Aether SaaS` |
+| `NEXT_PUBLIC_APP_URL` | Application root viewport link | `http://localhost:3000` |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🖌️ Theme Color Variables Customization
+
+Aether uses Tailwind CSS v4's CSS-first theme configuration. To change colors, navigate to `app/globals.css` and update the raw coordinates under `:root` and `.dark` selectors:
+
+```css
+:root {
+  --primary: 243.4 75.4% 58.6%; /* Primary brand HSL coordinates */
+  --background: 0 0% 100%;       /* Light background color */
+}
+
+.dark {
+  --primary: 243.4 75.4% 58.6%;
+  --background: 240 10% 3.9%;   /* Dark background color */
+}
+```
+
+---
+
+## 📄 License & Credits
+
+*   **Asset Credits**: All visual portrait placeholder graphics are sourced from license-free resources (Unsplash).
+*   **Design Ownership**: Custom designed SVG visuals are compiled natively without dependency overheads.
+*   **License**:
+    *   **Regular License**: For end product single domain distributions.
+    *   **Extended License**: For multi-client software integration packaging.
+
+---
+
+*Handcrafted for [Envato Buyer Placeholder] by the Engineering Development Team.*
